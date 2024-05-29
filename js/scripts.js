@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
 							case "experience":
 								dom.querySelector(`.experience_year`).innerHTML = lcIV["year"];
 								dom.querySelector(`.experience_role`).innerHTML = lcIV["role"];
-								dom.querySelector(`.experience_location_1`).innerHTML = lcIV["location_1"];
+								dom.querySelector(`.experience_location_1`).innerHTML = lcIV["company"];
 								dom.querySelector(`.experience_location_2`).innerHTML = lcIV["location_2"];
 								dom.querySelector(`.experience_description`).innerHTML = lcIV["description"];
 							break;
