@@ -208,7 +208,7 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
-		"project_title": "PhotoAndVideEdits.com",
+		"project_title": "PhotoAndVideEdits",
 		"category_short": "website",
 		"client_name": null,
 		"company_name": "PhotoAndVideEdits.com",
@@ -300,7 +300,7 @@ var myExperiences = [
 		"company": "ALAS Electronics Engineering Services",
 		"location_1": "Villa Leyson, Bacayan",
 		"location_2": "Cebu City, PH",
-		"description": "ALAS Electronics Engineering Services is a business owned by my father when I was still in college. Worked on softwares and web applications under this company.",
+		"description": "ALAS Electronics Engineering Services is a business owned by my father when I was still in college. Worked on software and web applications under this company.",
 	},
 	{
 		"year": "2021 -  Present",
@@ -316,7 +316,7 @@ var myExperiences = [
 		"company": "PhotoAndVideoEdits",
 		"location_1": null,
 		"location_2": "Mandaue City, PH",
-		"description": "Worked on a Real Estate Photo Editing. Added new features to the website and fixed bugs encountered by customers and supports.",
+		"description": "Worked on a Real Estate Photo Editing Company. Added new features to the website and fixed bugs encountered by customers and supports.",
 	},
 	{
 		"year": "2021 -  2022",
@@ -324,7 +324,7 @@ var myExperiences = [
 		"company": "MET Philippines",
 		"location_1": "2Quad Bldg, Cardinal Rosales Ave",
 		"location_2": "Cebu City, PH",
-		"description": "Worked on various web applications using PHP (Native, Laravel framework).",
+		"description": "Worked on various web applications using PHP (Native, Laravel framework) and MySQL.",
 	},
 	{
 		"year": "2019 -  2021",
@@ -350,8 +350,8 @@ var myEducation = [
 		"university": "Cebu Technological University",
 		"location": "Cebu City, PH",
 		"degree": "Bachelor's",
-		"background": "ICT",
-		"description": "Bachelor of Science in Information and Communication Technology. My college journey was a whirlwind of discovery, from late-night study sessions to spontaneous adventures with friends, shaping me into who I am today. College was a rollercoaster ride of highs and lows, where I found my passions, forged lifelong bonds, and learned as much outside the classroom as within it.",
+		"background": "BS ICT",
+		"description": "<strong>Bachelor of Science in Information and Communication Technology</strong>. My college journey was a whirlwind of discovery, from late-night study sessions to spontaneous adventures with friends, shaping me into who I am today. College was a rollercoaster ride of highs and lows, where I found my passions, forged lifelong bonds, and learned as much outside the classroom as within it.",
 	},
 ];
 
