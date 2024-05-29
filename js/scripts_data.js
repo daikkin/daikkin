@@ -313,9 +313,9 @@ var myExperiences = [
 	{
 		"year": "2022 -  Present",
 		"role": "Software / Web Developer",
-		"company": "PhotoAndVideoEdits.com",
+		"company": "PhotoAndVideoEdits",
 		"location_1": null,
-		"location_2": null,
+		"location_2": "Mandaue City, PH",
 		"description": "Worked on a Real Estate Photo Editing. Added new features to the website and fixed bugs encountered by customers and supports.",
 	},
 	{
@@ -340,7 +340,7 @@ var myExperiences = [
 		"company": "RightApps Solutions and Services",
 		"location_1": "211 Natalio B. Bacalso Ave",
 		"location_2": "Cebu City, PH",
-		"description": "Worked on Reservation System, Accounting System, HR & Payroll System, Inventory System. Used C#, PHP (Laravel and codeignighter Framework), JavaScript (with libraries), MySQL and PostgreSQL.",
+		"description": "Worked on Reservation System, Accounting System, HR & Payroll System, Inventory System. Used C#, PHP (Laravel and CodeIgniter Framework), JavaScript (with libraries), MySQL and PostgreSQL.",
 	}
 ];
 
