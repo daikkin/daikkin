@@ -8,6 +8,41 @@
 	white-space: nowrap;
 	border: 0;
 }
+.click_view_more {
+	cursor: pointer;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+.click_view_more .overlayer {
+	opacity: 0.6;
+	position: absolute;
+	background-color: #808080;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+}
+.click_view_more .text_overlay {
+	z-index: 5;
+	color: #fff !important;
+}
+.image_block_show_2 {
+	/*max-height: 200px;
+	width: auto;*/
+}
+.ci_inner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.project_title {
+	white-space: nowrap;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	text-wrap: wrap;
+}
 
 @media (min-width: 576px) {
 	/*.col-sm-auto > .btn {

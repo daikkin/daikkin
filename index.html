@@ -42,7 +42,7 @@
 						<div class="col-xxl-5">
 							<!-- Header text content-->
 							<div class="text-center text-xxl-start">
-								<div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Design &middot; Development &middot; Marketing</div></div>
+								<div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Design &middot; Development</div></div>
 								<div class="fs-3 fw-light text-muted">I can help your business to</div>
 								<h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Get online and grow fast</span></h1>
 								<div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
@@ -185,7 +185,7 @@
 							<div class="text-center my-5">
 								<h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
 								<p class="lead fw-light mb-4">My name is Reancy Villacarlos and I help brands grow.</p>
-								<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit dolorum itaque qui unde quisquam consequatur autem. Eveniet quasi nobis aliquid cumque officiis sed rem iure ipsa! Praesentium ratione atque dolorem?</p>
+								<p class="text-muted">I am <span id="my_age">25</span> years old. I am the breadwinner of my family. I have no problem with exploring new programming languages. I am a fast learner and will be able to adapt to any environment. I love opportunities where I’ll be able to grow and experience new things in life.</p>
 								<div class="d-flex justify-content-center fs-2 gap-4">
 									<!-- <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a> -->
 									<a class="text-gradient" href="https://www.linkedin.com/in/reancy-villacarlos-a689401b0/" target="__blank">
@@ -429,21 +429,40 @@
 				</div>
 			</section>
 		</main>
+
 		<!-- Footer-->
 		<footer class="bg-white py-4 mt-auto">
 			<div class="container px-5">
 				<div class="row align-items-center justify-content-between flex-column flex-sm-row">
-					<div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
+					<div class="col-auto"><div class="small m-0">Copyright &copy; 2023</div></div>
 					<div class="col-auto">
-						<a class="small" href="#!">Privacy</a>
+						<!-- <a class="small" href="#!">Privacy</a>
 						<span class="mx-1">&middot;</span>
 						<a class="small" href="#!">Terms</a>
-						<span class="mx-1">&middot;</span>
-						<a class="small" href="#!">Contact</a>
+						<span class="mx-1">&middot;</span> -->
+						<a class="small" href="javascript:contactMe();">Contact</a>
 					</div>
 				</div>
 			</div>
 		</footer>
+
+		<!-- Modal -->
+		<div class="modal fade" id="imageViewModal" tabindex="-1" aria-labelledby="imageViewModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="imageViewModalLabel">Image Viewer</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="d-none" hidden>
 			<div id="spinner_loader" class="spinner-border" role="status">
@@ -512,7 +531,7 @@
 					<div class="row">
 						<div class="col-md">
 							<div class="p-5">
-								<h2 class="fw-bolder m-0"><a class="text-dark project_title" href="javascript:void(0);" style="text-decoration: none;"></a></h2>
+								<h2 class="fw-bolder m-0"><a class="text-dark project_title" href="javascript:void(0);"></a></h2>
 								<p class="project_company_name"></p>
 								<p class="m-0 project_client_name"></p>
 								<p class="project_description"></p>
@@ -522,23 +541,53 @@
 								</small>
 							</div>
 						</div>
-						<div class="col-md-auto">
+						<div class="col-md-5" style="position: relative;">
+							<div class="w-100 h-100 d-flex align-items-center justify-content-center click_view_more">
+								<p class="text_overlay">Click to view more...</p>
+								<div class="overlayer"></div>
+							</div>
 							<!-- &text=Project%20Image -->
-							<img class="w-100 h-100 project_image" onclick="showOtherImges(this);" src="https://dummyimage.com/300x400/343a40/6c757d" style="object-fit: cover;" alt="..." />
+							<img class="w-100 h-100 project_image" src="https://dummyimage.com/200x200/343a40/6c757d" style="object-fit: cover;" alt="..." />
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<!-- Skills  -->
+			<!-- Skills	-->
 			<div id="skills_template" class="col mb-4">
 				<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 sl_line"></div>
 			</div>
 
-			<!-- Languages  -->
+			<!-- Languages	-->
 			<div id="languages_template" class="col mb-4">
 				<div class="d-flex align-items-center bg-light rounded-4 p-3 h-100 sl_line"></div>
 			</div>
+
+			<!-- Carousel -->
+			<div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="false">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="image_block_show_1 active" aria-current="true" aria-label="Slide 1"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="https://dummyimage.com/200x200/343a40/6c757d" class="image_block_show_2 d-block w-100" alt="...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+
+			<div id="cleanCarouselItem_1" class="carousel-item">
+				<img src="https://dummyimage.com/200x200/343a40/6c757d" class="image_block_show_2 d-block w-100" alt="...">
+			</div>
+
+			<button id="cleanCarouselItem_2" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
 		</div>
 
 		<!-- Bootstrap core JS-->

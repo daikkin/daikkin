@@ -5,6 +5,12 @@ window.acceptablecolors={primary:"#3B7DDD",secondary:"#6c757d",success:"#1cbb8c"
 var checkNUB = {undefined: undefined,null:null},
 	blankTemplate = document.querySelector("#blank_template");
 
+var imageViewerModal,
+	imageViewer;
+
+var contactMe = function() {
+	window.open('mailto:reancyvillacarlos@gmail.com');
+}
 var downloadResume = function() {
 	// add resume link
 };
@@ -59,6 +65,81 @@ var cloner = function(_from, _to, _checkChildIfHave = false, _classCheck = "", _
 
 	return _fDom || null;
 };
+var carouselCloner = function(_parent) {
+	let _dom = cloner(document.querySelector(`#carouselExampleCaptions`), _parent),
+		_newFlip = "cleanCarouselFlip";
+
+	if(_dom) {
+		_dom.setAttribute("id", _newFlip);
+
+		Array.from(document.querySelectorAll(`[data-bs-target="#carouselExampleCaptions"]`)).find(function(_el) {
+			_el.setAttribute("data-bs-target", `#${_newFlip}`)
+		});
+	}
+
+	return _dom;
+};
+var showOtherImges = function(_this, contentType = "projects", indexFind = 0) {
+	let _isFound = false,
+		_imagesArray = [],
+		_dom_2,
+		_dom_1,
+		_dom;
+
+	let cleanCarouselItem_1 = document.querySelector(`#cleanCarouselItem_1`),
+		cleanCarouselItem_2 = document.querySelector(`#cleanCarouselItem_2`);
+
+	imageViewerModal.querySelector(`.modal-body`).innerHTML = "";
+
+	if(!(loadContents[contentType] in checkNUB)) {
+		if(!(loadContents[contentType][indexFind] in checkNUB)) {
+			imageViewerModal.querySelector(`#imageViewModalLabel`).innerHTML = loadContents[contentType][indexFind]["project_title"] ?? "Image Viewer";
+
+			if(!(loadContents[contentType][indexFind]["project_main_image"] in checkNUB)) {
+				_isFound = true;
+				// _imagesArray = loadContents[contentType][indexFind]["project_images"];
+				_imagesArray = [loadContents[contentType][indexFind]["project_main_image"]].concat(loadContents[contentType][indexFind]["project_images"]);
+			}
+		}
+	}
+
+	if(!_isFound) {
+		_isFound = true;
+		_imagesArray = [_this.querySelector(`img.project_image`).getAttribute("src")];
+	}
+
+	if(_isFound && _imagesArray.length > 0) {
+		_dom = carouselCloner(imageViewerModal.querySelector(`.modal-body`));
+
+		if(_dom) {
+			_imagesArray.forEach(function(iaV, iaInd) {
+				let _indApp = iaInd+1;
+
+				if(iaInd === 0) {
+					_dom.querySelector(`.image_block_show_1`).setAttribute("aria-label", `Slide ${_indApp}`);
+					_dom.querySelector(`.image_block_show_2`).setAttribute("src", iaV);
+					_dom.querySelector(`.image_block_show_2`).setAttribute("alt", `Slide ${_indApp}`);
+				} else {
+					_dom_1 = cloner(cleanCarouselItem_1, _dom.querySelector(`.carousel-inner`));
+					_dom_2 = cloner(cleanCarouselItem_2, _dom.querySelector(`.carousel-indicators`));
+
+					if(_dom_2) {
+						_dom_2.setAttribute("data-bs-slide-to", iaInd);
+						_dom_2.setAttribute("aria-label", `Slide ${_indApp}`);
+						
+					}
+					if(_dom_1) {
+						_dom_1.querySelector(`.image_block_show_2`).setAttribute("src", iaV);
+						_dom_1.querySelector(`.image_block_show_2`).setAttribute("alt", `Slide ${_indApp}`);
+					}
+				}
+			});
+
+			/*project images viewer*/
+			imageViewer.show();
+		}
+	}
+};
 
 document.addEventListener("DOMContentLoaded", function() {
 	let dom;
@@ -68,6 +149,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		tempVar_3,
 		tempVar_4,
 		tempVar_5;
+
+	imageViewerModal = document.querySelector("#imageViewModal");
+	imageViewer = bootstrap.Modal.getOrCreateInstance(imageViewerModal);
 
 	Object.keys(loadContents).forEach(function(lcV, lcInd) {
 		tempVar = document.querySelector(`[section_for="${lcV}"]`);
@@ -91,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
 								dom.querySelector(`.project_title`).innerHTML = lcIV["project_title"];
 								dom.querySelector(`.project_description`).innerHTML = lcIV["project_description"];
 								dom.querySelector(`.project_technology_used`).innerHTML = tempVar_4.join(", ");
+								dom.querySelector(`.project_image`).parentNode.setAttribute("onclick", `showOtherImges(this, '${lcV}', ${lcIInd});`);
 								
 								if(!(lcIV["project_url"] in checkNUB)) {
 									dom.querySelector(`.project_title`).classList.remove("text-dark");
@@ -106,9 +191,14 @@ document.addEventListener("DOMContentLoaded", function() {
 								if(!(lcIV["project_date"] in checkNUB)) {
 									dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["project_date"]}</small></p>`;
 								}
-								
-								dom.querySelector(`.project_image`).setAttribute("src", `${tempVar_5}&text=${encodeURI(lcIV["project_title"])}`);
-								// project_main_image
+
+								// if(lcIV["project_images"].length > 0) {}
+								if(!(lcIV["project_main_image"] in checkNUB)) {
+									dom.querySelector(`.project_image`).setAttribute("src", `${lcIV["project_main_image"]}`);
+								} else {
+									dom.querySelector(`.project_image`).setAttribute("src", `${tempVar_5}&text=${encodeURI(lcIV["project_title"])}`);
+								}
+
 							break;
 
 							case "experience":
