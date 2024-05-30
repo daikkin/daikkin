@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
 								dom.querySelector(`.project_technology_used`).innerHTML = tempVar_4.join(", ");
 								
 								if(!(lcIV["project_url"] in checkNUB)) {
+									dom.querySelector(`.project_title`).classList.remove("text-dark");
 									dom.querySelector(`.project_title`).setAttribute("target", "__blank");
 									dom.querySelector(`.project_title`).setAttribute("href", lcIV["project_url"]);
 								}
