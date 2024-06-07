@@ -113,12 +113,13 @@ var showOtherImges = function(_this, contentType = "projects", indexFind = 0) {
 
 		if(_dom) {
 			_imagesArray.forEach(function(iaV, iaInd) {
-				let _indApp = iaInd+1;
+				let _indApp = iaInd+1,
+					_imgSelector = _dom.querySelector(`.image_block_show_2`);
 
 				if(iaInd === 0) {
+					_imgSelector.setAttribute("src", iaV);
+					_imgSelector.setAttribute("alt", `Slide ${_indApp}`);
 					_dom.querySelector(`.image_block_show_1`).setAttribute("aria-label", `Slide ${_indApp}`);
-					_dom.querySelector(`.image_block_show_2`).setAttribute("src", iaV);
-					_dom.querySelector(`.image_block_show_2`).setAttribute("alt", `Slide ${_indApp}`);
 				} else {
 					_dom_1 = cloner(cleanCarouselItem_1, _dom.querySelector(`.carousel-inner`));
 					_dom_2 = cloner(cleanCarouselItem_2, _dom.querySelector(`.carousel-indicators`));
@@ -129,10 +130,14 @@ var showOtherImges = function(_this, contentType = "projects", indexFind = 0) {
 						
 					}
 					if(_dom_1) {
-						_dom_1.querySelector(`.image_block_show_2`).setAttribute("src", iaV);
-						_dom_1.querySelector(`.image_block_show_2`).setAttribute("alt", `Slide ${_indApp}`);
+						_imgSelector = _dom_1.querySelector(`.image_block_show_2`);
+
+						_imgSelector.setAttribute("src", iaV);
+						_imgSelector.setAttribute("alt", `Slide ${_indApp}`);
 					}
 				}
+
+				// console.log([_imgSelector.naturalWidth, _imgSelector.naturalHeight]);
 			});
 
 			/*project images viewer*/
@@ -140,6 +145,16 @@ var showOtherImges = function(_this, contentType = "projects", indexFind = 0) {
 		}
 	}
 };
+var viewMore = function(contentType = "projects") {
+	if(!(loadContents[contentType] in checkNUB)) {
+		switch(contentType) {
+			case "projects":
+				document.querySelectorAll(`.projects_template.d-none`).forEach(function(_el) { _el.classList.remove("d-none"); });
+				document.querySelectorAll(`.projects_viewmore`).forEach(function(_el) { _el.parentNode.removeChild(_el); });
+			break;
+		}
+	}
+}
 
 document.addEventListener("DOMContentLoaded", function() {
 	let dom;
@@ -149,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		tempVar_3,
 		tempVar_4,
 		tempVar_5;
+
+	let contentLimiter = {};
 
 	imageViewerModal = document.querySelector("#imageViewModal");
 	imageViewer = bootstrap.Modal.getOrCreateInstance(imageViewerModal);
@@ -162,12 +179,21 @@ document.addEventListener("DOMContentLoaded", function() {
 			tempVar_2 = document.querySelector(`[load_content="${tempVar_1}"]`);
 
 			if(loadContents[lcV].length > 0) {
+				contentLimiter[lcV] = 0;
+
 				loadContents[lcV].forEach(function(lcIV, lcIInd) {
 					dom = cloner(tempVar_3, tempVar);
+					contentLimiter[lcV]++;
 
 					if(!(dom in checkNUB)) {
 						switch(lcV) {
 							case "projects":
+								/*need to know if it's required to hide because purpose of portfolio is to show all projects(???)*/
+								/*if(contentLimiter[lcV] > 5) {
+									dom.classList.add("d-none");
+									cloner(`${lcV}_viewmore`, tempVar, true, `.${lcV}_viewmore`);
+								}*/
+
 								tempVar_5 = dom.querySelector(`.project_image`).getAttribute("src");
 								tempVar_4 = Array.from(lcIV["technologies_used"]).map(function(tuV) { return `<strong>${tuV}</strong>`; });
 
