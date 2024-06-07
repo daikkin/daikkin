@@ -231,7 +231,7 @@
 									<div class="col-sm-auto">
 										<!-- Download resume button-->
 										<!-- Note: Set the link href target to a PDF file within your project-->
-										<a class="btn btn-primary px-4 py-3 w-100" href="javascript:downloadResume();">
+										<a id="downloadResume" class="btn btn-primary px-4 py-3 w-100" href="javascript:downloadResume();">
 											<div class="d-inline-block bi bi-download me-2"></div>
 											Download Resume
 										</a>
@@ -440,6 +440,8 @@
 		</div>
 
 		<div class="d-none" hidden>
+			<a id="fileDownloader" href="" download>Downloader</a>
+
 			<div id="spinner_loader" class="spinner-border" role="status">
 				<span class="sr-only">Loading...</span>
 			</div>

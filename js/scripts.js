@@ -8,11 +8,42 @@ var checkNUB = {undefined: undefined,null:null},
 var imageViewerModal,
 	imageViewer;
 
+function setCookie(cName, cValue, exDays = 30) {
+	let _thisDate = new Date();
+
+	_thisDate.setTime(_thisDate.getTime() + (exDays*24*60*60*1000));
+	document.cookie = `${cName}=${cValue};expires=${_thisDate.toUTCString()};path=/`;
+}
+function getCookie(cName) {
+	let name = `${cName}=`,
+		decodedCookie = decodeURIComponent(document.cookie),
+		ca = decodedCookie.split(';');
+
+	for(let i = 0; i <ca.length; i++) {
+		let c = ca[i];
+
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+
+	return null;
+}
+
 var contactMe = function() {
 	window.open('mailto:reancyvillacarlos@gmail.com');
 }
 var downloadResume = function() {
-	// add resume link
+	let dom = document.querySelector("#fileDownloader");
+
+	dom.setAttribute("href", "assets/Reancy_Villacarlos.pdf");
+	dom.click();
+
+	setCookie("download_done", "yes");
 };
 var readTextFile = function(file, callback) {
 	let rawFile;
@@ -169,6 +200,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	imageViewerModal = document.querySelector("#imageViewModal");
 	imageViewer = bootstrap.Modal.getOrCreateInstance(imageViewerModal);
+
+	if(!(getCookie("download_done") in checkNUB)) {
+		document.querySelector("#downloadResume").innerHTML = `<div class="d-inline-block bi bi-arrow-clockwise me-2"></div>Download Resume again`;
+	}
 
 	Object.keys(loadContents).forEach(function(lcV, lcInd) {
 		tempVar = document.querySelector(`[section_for="${lcV}"]`);
