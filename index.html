@@ -374,22 +374,22 @@
 								<form id="contactForm" netlify>
 									<!-- Name input-->
 									<div class="form-floating mb-3">
-										<input required class="form-control" id="name" type="text" placeholder="Enter your name..." />
+										<input required class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." />
 										<label for="name">Full name</label>
 									</div>
 									<!-- Email address input-->
 									<div class="form-floating mb-3">
-										<input required class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+										<input required class="form-control" id="email" name="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
 										<label for="email">Email address</label>
 									</div>
 									<!-- Phone number input-->
 									<div class="form-floating mb-3">
-										<input required class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" />
+										<input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" />
 										<label for="phone">Phone number</label>
 									</div>
 									<!-- Message input-->
 									<div class="form-floating mb-3">
-										<textarea required class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem"></textarea>
+										<textarea required class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem"></textarea>
 										<label for="message">Message</label>
 									</div>
 
