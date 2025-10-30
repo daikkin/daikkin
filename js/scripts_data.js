@@ -14,6 +14,20 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"project_title": "Algo Trade HQ",
+		"category_short": "website",
+		"client_name": null,
+		"company_name": "Freelance",
+		"project_date": "2025",
+		"project_url": "https://algotradehq.com/",
+		"project_description": "A trading system that helps new traders. This system automates trading like never before. With the help of an AI Trading Buddy, you won't even need to always keep track of of your risks, your AI Trading Buddy will help you with it.",
+		"project_main_image": null,
+		"technologies_used": [
+			"PHP (Laravel Framework)", "CSS (Bootstrap)", "JavaScript", "MySQL"
+		],
+		"project_images": [],
+	},
+	{
 		"project_title": "ALAS Queueing",
 		"category_short": "local",
 		"client_name": null,
