@@ -14,6 +14,53 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"project_title": "Southside Devs",
+		"category_short": "website",
+		"client_name": null,
+		"company_name": "Freelance",
+		"project_date": "2026",
+		"project_url": "https://southsidedevs.com/",
+		"project_description": "SouthSide Devs is a Cebu-based web development agency that helps businesses build a professional online presence without the high upfront costs typically associated with custom websites. Instead of traditional project-based pricing, they offer a subscription model that includes website design, development, maintenance, and ongoing support. Their focus is on creating modern, business-driven websites that not only look great but also help generate leads, build credibility, and support growth.",
+		"project_main_image": "assets/southsidedevs/landing_1.jpeg",
+		"technologies_used": [
+			"PHP (Codeigniter Framework)", "CSS", "JavaScript", "MySQL"
+		],
+		"project_images": [],
+	},
+	{
+		"project_title": "Reptov",
+		"category_short": "website",
+		"client_name": null,
+		"company_name": "PhotoAndVideoEdits.com",
+		"project_date": "2026",
+		"project_url": "https://reptov.com/",
+		"project_description": "Reptov is a real-estate-photo-to-video editing website that turns listing photos into real estate video tour.",
+		"project_main_image": "assets/reptov/landing_1.jpeg",
+		"technologies_used": [
+			"ReactJS", "JavaScript", "TypeScript", "PostgreSQL"
+		],
+		"project_images": [],
+	},
+	{
+		"project_title": "ALAS IT Control",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": "ALAS Electronics Engineering Services",
+		"project_date": "2025",
+		"project_url": null,
+		"project_description": "A server-side Node.js application for tracking student attendance with scan in/out functionality.",
+		"project_main_image": "assets/alas_scanattenditcontrol/show_1.png",
+		"technologies_used": [
+			"Python (Flask, Jinja, etc...)", "CSS (Bootstrap)", "JavaScript", "TypeScript", "SocketIO", "Node.js", "Express.js", "SQLite", "RaspberryPi (Linux-based OS)"
+		],
+		"project_images": [
+			"assets/alas_scanattenditcontrol/show_2.jpeg",
+			"assets/alas_scanattenditcontrol/show_3.jpeg",
+			"assets/alas_scanattenditcontrol/show_4.jpeg",
+			"assets/alas_scanattenditcontrol/show_5.jpeg",
+		],
+	},
+	{
 		"project_title": "Algo Trade HQ",
 		"category_short": "website",
 		"client_name": null,
@@ -21,7 +68,7 @@ var myProjects = [
 		"project_date": "2025",
 		"project_url": "https://algotradehq.com/",
 		"project_description": "A trading system that helps new traders. This system automates trading like never before. With the help of an AI Trading Buddy, you won't even need to always keep track of of your risks, your AI Trading Buddy will help you with it.",
-		"project_main_image": null,
+		"project_main_image": "assets/algotradehq/landing_1.jpeg",
 		"technologies_used": [
 			"PHP (Laravel Framework)", "CSS (Bootstrap)", "JavaScript", "MySQL"
 		],
@@ -475,14 +522,6 @@ var myProjects = [
 
 var myExperiences = [
 	{
-		"year": "2022 -  Present",
-		"role": "Software / Web Developer",
-		"company": "PhotoAndVideoEdits",
-		"location_1": null,
-		"location_2": "Mandaue City, PH",
-		"description": "Worked on a Real Estate Photo Editing Company. Added new features to the website and fixed bugs encountered by users.",
-	},
-	{
 		"year": "2021 -  Present",
 		"role": "Software / Web Developer",
 		"company": "Freelance",
@@ -497,6 +536,14 @@ var myExperiences = [
 		"location_1": "Villa Leyson, Bacayan",
 		"location_2": "Cebu City, PH",
 		"description": "ALAS Electronics Engineering Services is a business owned by my father when I was still in college. Worked on software and web applications under this company, product installations and assisted in building the products as well.",
+	},
+	{
+		"year": "2022 -  2026",
+		"role": "Software / Web Developer",
+		"company": "PhotoAndVideoEdits",
+		"location_1": null,
+		"location_2": "Mandaue City, PH",
+		"description": "Worked on a Real Estate Photo Editing Company. Added new features to the website and fixed bugs encountered by users.",
 	},
 	{
 		"year": "2021 -  2022",

@@ -201,6 +201,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	imageViewerModal = document.querySelector("#imageViewModal");
 	imageViewer = bootstrap.Modal.getOrCreateInstance(imageViewerModal);
 
+	// for fixing the right height allowed
+	// imageViewerModal.addEventListener('shown.bs.modal', event => {
+	// 	this.querySelector(`.modal-body`).clientHeight
+	// });
+
 	if(!(getCookie("download_done") in checkNUB)) {
 		document.querySelector("#downloadResume").innerHTML = `<div class="d-inline-block bi bi-arrow-clockwise me-2"></div>Download Resume again`;
 	}
@@ -253,13 +258,15 @@ document.addEventListener("DOMContentLoaded", function() {
 									dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["project_date"]}</small></p>`;
 								}
 
+								// set height of project image based on how much the height of the project details
+								dom.querySelector(`.project_image`).style.height = `${dom.querySelector(`.project_details`).clientHeight}px`;
+
 								// if(lcIV["project_images"].length > 0) {}
 								if(!(lcIV["project_main_image"] in checkNUB)) {
 									dom.querySelector(`.project_image`).setAttribute("src", `${lcIV["project_main_image"]}`);
 								} else {
 									dom.querySelector(`.project_image`).setAttribute("src", `${tempVar_5}&text=${encodeURI(lcIV["project_title"])}`);
 								}
-
 							break;
 
 							case "experience":
