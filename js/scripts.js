@@ -194,9 +194,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		tempVar_2,
 		tempVar_3,
 		tempVar_4,
-		tempVar_5;
+		tempVar_5,
+		tempVar_6;
 
-	let contentLimiter = {};
+	let bodyWidth = document.body.clientWidth,
+		contentLimiter = {};
 
 	imageViewerModal = document.querySelector("#imageViewModal");
 	imageViewer = bootstrap.Modal.getOrCreateInstance(imageViewerModal);
@@ -210,96 +212,103 @@ document.addEventListener("DOMContentLoaded", function() {
 		document.querySelector("#downloadResume").innerHTML = `<div class="d-inline-block bi bi-arrow-clockwise me-2"></div>Download Resume again`;
 	}
 
-	Object.keys(loadContents).forEach(function(lcV, lcInd) {
-		tempVar = document.querySelector(`[section_for="${lcV}"]`);
-		tempVar_3 = document.querySelector(`#${lcV}_template`);
+	// let everything load up first
+	setTimeout(function() {
+		Object.keys(loadContents).forEach(function(lcV, lcInd) {
+			tempVar = document.querySelector(`[section_for="${lcV}"]`);
+			tempVar_3 = document.querySelector(`#${lcV}_template`);
 
-		if(!(tempVar in checkNUB) && !(tempVar in checkNUB)) {
-			tempVar_1 = tempVar.getAttribute("id");
-			tempVar_2 = document.querySelector(`[load_content="${tempVar_1}"]`);
+			if(!(tempVar in checkNUB) && !(tempVar in checkNUB)) {
+				tempVar_1 = tempVar.getAttribute("id");
+				tempVar_2 = document.querySelector(`[load_content="${tempVar_1}"]`);
 
-			if(loadContents[lcV].length > 0) {
-				contentLimiter[lcV] = 0;
+				if(loadContents[lcV].length > 0) {
+					contentLimiter[lcV] = 0;
 
-				loadContents[lcV].forEach(function(lcIV, lcIInd) {
-					dom = cloner(tempVar_3, tempVar);
-					contentLimiter[lcV]++;
+					loadContents[lcV].forEach(function(lcIV, lcIInd) {
+						dom = cloner(tempVar_3, tempVar);
+						contentLimiter[lcV]++;
 
-					if(!(dom in checkNUB)) {
-						switch(lcV) {
-							case "projects":
-								/*need to know if it's required to hide because purpose of portfolio is to show all projects(???)*/
-								/*if(contentLimiter[lcV] > 5) {
-									dom.classList.add("d-none");
-									cloner(`${lcV}_viewmore`, tempVar, true, `.${lcV}_viewmore`);
-								}*/
+						if(!(dom in checkNUB)) {
+							switch(lcV) {
+								case "projects":
+									/*need to know if it's required to hide because purpose of portfolio is to show all projects(???)*/
+									/*if(contentLimiter[lcV] > 5) {
+										dom.classList.add("d-none");
+										cloner(`${lcV}_viewmore`, tempVar, true, `.${lcV}_viewmore`);
+									}*/
 
-								tempVar_5 = dom.querySelector(`.project_image`).getAttribute("src");
-								tempVar_4 = Array.from(lcIV["technologies_used"]).map(function(tuV) { return `<strong>${tuV}</strong>`; });
+									tempVar_5 = dom.querySelector(`.project_image`).getAttribute("src");
+									tempVar_4 = Array.from(lcIV["technologies_used"]).map(function(tuV) { return `<strong>${tuV}</strong>`; });
 
-								dom.querySelector(`.project_company_name`).innerHTML = "";
-								dom.querySelector(`.project_title`).innerHTML = lcIV["project_title"];
-								dom.querySelector(`.project_description`).innerHTML = lcIV["project_description"];
-								dom.querySelector(`.project_technology_used`).innerHTML = tempVar_4.join(", ");
-								dom.querySelector(`.project_image`).parentNode.setAttribute("onclick", `showOtherImges(this, '${lcV}', ${lcIInd});`);
-								
-								if(!(lcIV["project_url"] in checkNUB)) {
-									dom.querySelector(`.project_title`).classList.remove("text-dark");
-									dom.querySelector(`.project_title`).setAttribute("target", "__blank");
-									dom.querySelector(`.project_title`).setAttribute("href", lcIV["project_url"]);
-								}
-								if(!(lcIV["client_name"] in checkNUB)) {
-									dom.querySelector(`.project_client_name`).innerHTML = `<small>Client: <strong><i>${lcIV["client_name"]}</i></strong></small>`;
-								}
-								if(!(lcIV["company_name"] in checkNUB)) {
-									dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["company_name"]}</small></p>`;
-								}
-								if(!(lcIV["project_date"] in checkNUB)) {
-									dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["project_date"]}</small></p>`;
-								}
+									dom.querySelector(`.project_company_name`).innerHTML = "";
+									dom.querySelector(`.project_title`).innerHTML = lcIV["project_title"];
+									dom.querySelector(`.project_description`).innerHTML = lcIV["project_description"];
+									dom.querySelector(`.project_technology_used`).innerHTML = tempVar_4.join(", ");
+									dom.querySelector(`.project_image`).parentNode.setAttribute("onclick", `showOtherImges(this, '${lcV}', ${lcIInd});`);
+									
+									if(!(lcIV["project_url"] in checkNUB)) {
+										dom.querySelector(`.project_title`).classList.remove("text-dark");
+										dom.querySelector(`.project_title`).setAttribute("target", "__blank");
+										dom.querySelector(`.project_title`).setAttribute("href", lcIV["project_url"]);
+									}
+									if(!(lcIV["client_name"] in checkNUB)) {
+										dom.querySelector(`.project_client_name`).innerHTML = `<small>Client: <strong><i>${lcIV["client_name"]}</i></strong></small>`;
+									}
+									if(!(lcIV["company_name"] in checkNUB)) {
+										dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["company_name"]}</small></p>`;
+									}
+									if(!(lcIV["project_date"] in checkNUB)) {
+										dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["project_date"]}</small></p>`;
+									}
 
-								// set height of project image based on how much the height of the project details
-								dom.querySelector(`.project_image`).style.height = `${dom.querySelector(`.project_details`).clientHeight}px`;
+									// if(lcIV["project_images"].length > 0) {}
+									if(!(lcIV["project_main_image"] in checkNUB)) {
+										dom.querySelector(`.project_image`).setAttribute("src", `${lcIV["project_main_image"]}`);
+									} else {
+										dom.querySelector(`.project_image`).setAttribute("src", `${tempVar_5}&text=${encodeURI(lcIV["project_title"])}`);
+									}
 
-								// if(lcIV["project_images"].length > 0) {}
-								if(!(lcIV["project_main_image"] in checkNUB)) {
-									dom.querySelector(`.project_image`).setAttribute("src", `${lcIV["project_main_image"]}`);
-								} else {
-									dom.querySelector(`.project_image`).setAttribute("src", `${tempVar_5}&text=${encodeURI(lcIV["project_title"])}`);
-								}
-							break;
+									tempVar_6 = (bodyWidth > 767)?
+										dom.querySelector(`.project_details`).clientHeight:
+										// make it same with how much the width is
+										dom.querySelector(`.project_details`).clientWidth;
+									// set height of project image based on how much the height of the project details
+									dom.querySelector(`.project_image`).style.height = `${tempVar_6}px`;
+								break;
 
-							case "experience":
-								dom.querySelector(`.experience_year`).innerHTML = lcIV["year"];
-								dom.querySelector(`.experience_role`).innerHTML = lcIV["role"];
-								dom.querySelector(`.experience_location_1`).innerHTML = lcIV["company"];
-								dom.querySelector(`.experience_location_2`).innerHTML = lcIV["location_2"];
-								dom.querySelector(`.experience_description`).innerHTML = lcIV["description"];
-							break;
+								case "experience":
+									dom.querySelector(`.experience_year`).innerHTML = lcIV["year"];
+									dom.querySelector(`.experience_role`).innerHTML = lcIV["role"];
+									dom.querySelector(`.experience_location_1`).innerHTML = lcIV["company"];
+									dom.querySelector(`.experience_location_2`).innerHTML = lcIV["location_2"];
+									dom.querySelector(`.experience_description`).innerHTML = lcIV["description"];
+								break;
 
-							case "education":
-								dom.querySelector(`.education_year`).innerHTML = lcIV["year"];
-								dom.querySelector(`.education_uni`).innerHTML = lcIV["university"];
-								dom.querySelector(`.education_location`).innerHTML = lcIV["location"];
-								dom.querySelector(`.education_degree`).innerHTML = lcIV["degree"];
-								dom.querySelector(`.education_background`).innerHTML = lcIV["background"];
-								dom.querySelector(`.education_description`).innerHTML = lcIV["description"];
-							break;
+								case "education":
+									dom.querySelector(`.education_year`).innerHTML = lcIV["year"];
+									dom.querySelector(`.education_uni`).innerHTML = lcIV["university"];
+									dom.querySelector(`.education_location`).innerHTML = lcIV["location"];
+									dom.querySelector(`.education_degree`).innerHTML = lcIV["degree"];
+									dom.querySelector(`.education_background`).innerHTML = lcIV["background"];
+									dom.querySelector(`.education_description`).innerHTML = lcIV["description"];
+								break;
 
-							case "skills":
-							case "languages":
-								dom.querySelector(`.sl_line`).innerHTML = lcIV;
-							break;
+								case "skills":
+								case "languages":
+									dom.querySelector(`.sl_line`).innerHTML = lcIV;
+								break;
+							}
 						}
-					}
-				});
+					});
 
-				try {
-					tempVar_2.parentNode.removeChild(tempVar_2);
-				} catch(e) { }
-			} else {
-				cloner(blankTemplate, tempVar, true, `.${lcV}_template`);
+					try {
+						tempVar_2.parentNode.removeChild(tempVar_2);
+					} catch(e) { }
+				} else {
+					cloner(blankTemplate, tempVar, true, `.${lcV}_template`);
+				}
 			}
-		}
-	});
+		});
+	}, 500);
 });
