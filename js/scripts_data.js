@@ -61,6 +61,34 @@ var myProjects = [
 		],
 	},
 	{
+		"project_title": "Python Scrapper",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": "PhotoAndVideoEdits.com",
+		"project_date": "2025",
+		"project_url": null,
+		"project_description": "A python script that would download images in a website.",
+		"project_main_image": null,
+		"technologies_used": [
+			"Python (Selenium, etc...)"
+		],
+		"project_images": [],
+	},
+	{
+		"project_title": "Python Request Handler",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": null,
+		"project_date": "2025",
+		"project_url": null,
+		"project_description": "I created a request handler in Python that receives RAW images (CR2, DNG, etc...), converts it to JPEG format and use HuggingFace, Transformers and Torch to classify real-estate property images if the image is an exterior or interior image. I also added video classifier if the video is an exterior or interior shot.",
+		"project_main_image": null,
+		"technologies_used": [
+			"Python (HuggingFace, Transformers, fal.ai Client, Flask, Jinja, etc...)", "SocketIO", "Node.js"
+		],
+		"project_images": [],
+	},
+	{
 		"project_title": "Algo Trade HQ",
 		"category_short": "website",
 		"client_name": null,
