@@ -1,47 +1,23 @@
-window.theme={primary:"#3B7DDD",secondary:"#6c757d",success:"#1cbb8c",info:"#17a2b8",warning:"#fcb92c",danger:"#dc3545",white:"#fff","gray-100":"#f8f9fa","gray-200":"#e9ecef","gray-300":"#dee2e6","gray-400":"#ced4da","gray-500":"#adb5bd","gray-600":"#6c757d","gray-700":"#495057","gray-800":"#343a40","gray-900":"#212529",black:"#000"};
-window.acceptablecolors={primary:"#3B7DDD",secondary:"#6c757d",success:"#1cbb8c",info:"#17a2b8",warning:"#fcb92c",danger:"#dc3545",black:"#000","gray-100":"#f8f9fa","gray-200":"#e9ecef","gray-300":"#dee2e6","gray-400":"#ced4da","gray-500":"#adb5bd","gray-600":"#6c757d","gray-700":"#495057","gray-800":"#343a40","gray-900":"#212529"};
-
-/*global variables*/
-var checkNUB = {undefined: undefined,null:null},
-	blankTemplate = document.querySelector("#blank_template");
-
+var blankTemplate = document.querySelector("#blank_template")
 var imageViewerModal,
 	imageViewer;
-
-function setCookie(cName, cValue, exDays = 30) {
-	let _thisDate = new Date();
-
-	_thisDate.setTime(_thisDate.getTime() + (exDays*24*60*60*1000));
-	document.cookie = `${cName}=${cValue};expires=${_thisDate.toUTCString()};path=/`;
-}
-function getCookie(cName) {
-	let name = `${cName}=`,
-		decodedCookie = decodeURIComponent(document.cookie),
-		ca = decodedCookie.split(';');
-
-	for(let i = 0; i <ca.length; i++) {
-		let c = ca[i];
-
-		while (c.charAt(0) == ' ') {
-			c = c.substring(1);
-		}
-
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-
-	return null;
-}
 
 var contactMe = function() {
 	window.open('mailto:reancyvillacarlos@gmail.com');
 }
 var downloadResume = function() {
-	let dom = document.querySelector("#fileDownloader");
+	try {
+		let htmlResume = document.querySelector(`iframe#resumeInHtml`);
 
-	dom.setAttribute("href", "assets/Reancy_Villacarlos.pdf");
-	dom.click();
+		// html2pdf(htmlResume);
+		// print it instead
+		htmlResume.contentWindow.print();
+	} catch(error) {
+		let dom = document.querySelector("#fileDownloader");
+
+		dom.setAttribute("href", "assets/Reancy_Villacarlos.pdf");
+		dom.click();
+	}
 
 	setCookie("download_done", "yes");
 };
@@ -60,41 +36,6 @@ var readTextFile = function(file, callback) {
 
 		rawFile.send(null);
 	}
-};
-var cloner = function(_from, _to, _checkChildIfHave = false, _classCheck = "", _removeIfExists = true, _prepend = false) {
-	let _fDom = document.getElementById(_from),
-		_tDom = document.getElementById(_to),
-		_checkChilds, _checkChilds1, _cCheck;
-
-	if(typeof _from === "object") { _fDom = _from; }
-	if(typeof _to === "object") { _tDom = _to; }
-	if(_fDom != undefined && _tDom != undefined) {
-		if(_classCheck != "" && _removeIfExists) {
-			_checkChilds1 = _tDom.querySelectorAll(_classCheck);
-			Array.from(_checkChilds1).find(function(_element) {
-				_element.parentNode.removeChild(_element);
-			});
-		}
-		if(_checkChildIfHave) {
-			// check if this element already exists
-			_checkChilds = _tDom.querySelectorAll("." + _fDom.id);
-			Array.from(_checkChilds).find(function(_element) {
-				_element.parentNode.removeChild(_element);
-			});
-		}
-
-		_fDom = _fDom.cloneNode(true);
-		_fDom.classList.add(_fDom.id);
-		_fDom.removeAttribute("id");
-
-		if(_prepend && _tDom.children.length > 0) {
-			_tDom.insertBefore(_fDom, _tDom.children[0]);
-		} else {
-			_tDom.appendChild(_fDom);
-		}
-	}
-
-	return _fDom || null;
 };
 var carouselCloner = function(_parent) {
 	let _dom = cloner(document.querySelector(`#carouselExampleCaptions`), _parent),
@@ -212,6 +153,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		document.querySelector("#downloadResume").innerHTML = `<div class="d-inline-block bi bi-arrow-clockwise me-2"></div>Download Resume again`;
 	}
 
+	// set age here
+	document.querySelector(`#my_age`).innerHTML = myAge;
+
 	// let everything load up first
 	setTimeout(function() {
 		Object.keys(loadContents).forEach(function(lcV, lcInd) {
@@ -239,12 +183,16 @@ document.addEventListener("DOMContentLoaded", function() {
 									}*/
 
 									tempVar_5 = dom.querySelector(`.project_image`).getAttribute("src");
-									tempVar_4 = Array.from(lcIV["technologies_used"]).map(function(tuV) { return `<strong>${tuV}</strong>`; });
+									if(Array.isArray(lcIV["technologies_used"]) && lcIV["technologies_used"].length > 0) {
+										tempVar_4 = Array.from(lcIV["technologies_used"]).map(function(tuV) { return `<strong>${tuV}</strong>`; });
+										dom.querySelector(`.project_technology_used`).innerHTML = tempVar_4.join(", ");
+									} else {
+										dom.querySelector(`.project_technology_used`).parentNode.setAttribute("hidden", true);
+									}
 
 									dom.querySelector(`.project_company_name`).innerHTML = "";
 									dom.querySelector(`.project_title`).innerHTML = lcIV["project_title"];
 									dom.querySelector(`.project_description`).innerHTML = lcIV["project_description"];
-									dom.querySelector(`.project_technology_used`).innerHTML = tempVar_4.join(", ");
 									dom.querySelector(`.project_image`).parentNode.setAttribute("onclick", `showOtherImges(this, '${lcV}', ${lcIInd});`);
 									
 									if(!(lcIV["project_url"] in checkNUB)) {
@@ -289,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
 									dom.querySelector(`.education_year`).innerHTML = lcIV["year"];
 									dom.querySelector(`.education_uni`).innerHTML = lcIV["university"];
 									dom.querySelector(`.education_location`).innerHTML = lcIV["location"];
-									dom.querySelector(`.education_degree`).innerHTML = lcIV["degree"];
+									dom.querySelector(`.education_degree`).innerHTML = lcIV["degree"]??"";
 									dom.querySelector(`.education_background`).innerHTML = lcIV["background"];
 									dom.querySelector(`.education_description`).innerHTML = lcIV["description"];
 								break;

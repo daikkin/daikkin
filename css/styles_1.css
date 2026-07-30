@@ -43,6 +43,11 @@
 	text-decoration: none;
 	text-wrap: wrap;
 }
+.education_description,
+.experience_description,
+.project_description {
+	text-align: justify;
+}
 
 @media (min-width: 576px) {
 	/*.col-sm-auto > .btn {

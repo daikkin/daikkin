@@ -1,3 +1,73 @@
+window.theme={primary:"#3B7DDD",secondary:"#6c757d",success:"#1cbb8c",info:"#17a2b8",warning:"#fcb92c",danger:"#dc3545",white:"#fff","gray-100":"#f8f9fa","gray-200":"#e9ecef","gray-300":"#dee2e6","gray-400":"#ced4da","gray-500":"#adb5bd","gray-600":"#6c757d","gray-700":"#495057","gray-800":"#343a40","gray-900":"#212529",black:"#000"};
+window.acceptablecolors={primary:"#3B7DDD",secondary:"#6c757d",success:"#1cbb8c",info:"#17a2b8",warning:"#fcb92c",danger:"#dc3545",black:"#000","gray-100":"#f8f9fa","gray-200":"#e9ecef","gray-300":"#dee2e6","gray-400":"#ced4da","gray-500":"#adb5bd","gray-600":"#6c757d","gray-700":"#495057","gray-800":"#343a40","gray-900":"#212529"};
+
+/*global variables*/
+var checkNUB = {undefined: undefined,null:null};
+
+var setCookie = function(cName, cValue, exDays = 30) {
+	let _thisDate = new Date();
+
+	_thisDate.setTime(_thisDate.getTime() + (exDays*24*60*60*1000));
+	document.cookie = `${cName}=${cValue};expires=${_thisDate.toUTCString()};path=/`;
+}
+var getCookie = function(cName) {
+	let name = `${cName}=`,
+		decodedCookie = decodeURIComponent(document.cookie),
+		ca = decodedCookie.split(';');
+
+	for(let i = 0; i <ca.length; i++) {
+		let c = ca[i];
+
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+
+	return null;
+}
+var cloner = function(_from, _to, _checkChildIfHave = false, _classCheck = "", _removeIfExists = true, _prepend = false) {
+	let _fDom = document.getElementById(_from),
+		_tDom = document.getElementById(_to),
+		_checkChilds, _checkChilds1, _cCheck;
+
+	if(typeof _from === "object") { _fDom = _from; }
+	if(typeof _to === "object") { _tDom = _to; }
+	if(_fDom != undefined && _tDom != undefined) {
+		if(_classCheck != "" && _removeIfExists) {
+			_checkChilds1 = _tDom.querySelectorAll(_classCheck);
+			Array.from(_checkChilds1).find(function(_element) {
+				_element.parentNode.removeChild(_element);
+			});
+		}
+		if(_checkChildIfHave) {
+			// check if this element already exists
+			_checkChilds = _tDom.querySelectorAll("." + _fDom.id);
+			Array.from(_checkChilds).find(function(_element) {
+				_element.parentNode.removeChild(_element);
+			});
+		}
+
+		_fDom = _fDom.cloneNode(true);
+		_fDom.classList.add(_fDom.id);
+		_fDom.removeAttribute("id");
+
+		if(_prepend && _tDom.children.length > 0) {
+			_tDom.insertBefore(_fDom, _tDom.children[0]);
+		} else {
+			_tDom.appendChild(_fDom);
+		}
+	}
+
+	return _fDom || null;
+};
+var removeElement = function(element) {
+	return element.parentNode.removeChild(element);
+};
+
 var myProjects = [
 	{
 		"project_title": "ALAS Wifi",
@@ -11,6 +81,18 @@ var myProjects = [
 		"technologies_used": [
 			"Python (Flask, Jinja, etc...)", "CSS (Bootstrap)", "JavaScript", "SocketIO", "Node.js (PM2)", "SQLite", "RaspberryPi (Linux-based OS)"
 		],
+		"project_images": [],
+	},
+	{
+		"project_title": "ALAS HRIS",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": "ALAS Electronics Engineering Services",
+		"project_date": "Upcoming",
+		"project_url": null,
+		"project_description": "A web platform that centralizes employee data and automates HR tasks like payroll, timekeeping, benefits administration, and onboarding. It should allow organizations to streamline operations and empowers employees with self-service portals to request leaves and view payslips. this web app should also be allowed to handle multiple organizations and should also allow generating API Keys in each organization to be able to handle requests via API calls.",
+		"project_main_image": null,
+		"technologies_used": [],
 		"project_images": [],
 	},
 	{
@@ -449,6 +531,7 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
 		"project_title": "RightApps Accounting System",
 		"category_short": "local",
 		"client_name": "Aquamarine Seawalker Ventures",
@@ -456,6 +539,11 @@ var myProjects = [
 		"project_date": "2018",
 		"project_url": null,
 		"project_description": "My contributions to this system is on customizing the accounting system to our client's needs. It also allows our customer to also record reservations booked by their customers and walk-ins.",
+		"additional_description": [
+			"An accounting management system customized to meet the specific operational needs of clients, including financial record management and business process automation.",
+			"The system also provides reservation management features, allowing customers to record and track bookings made by clients and walk-in customers.",
+			"Contributions include system customization, implementing client-requested enhancements, and improving functionalities to support more efficient business operations.",
+		],
 		"project_main_image": "assets/rightapps/ra_logo_1.png",
 		"technologies_used": [
 			"C#", "PostgreSQL"
@@ -463,6 +551,7 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
 		"project_title": "DOHOLRS (Online Licensing and Regulatory System)",
 		"category_short": "local",
 		"client_name": "Department of Health (DOH)",
@@ -470,6 +559,11 @@ var myProjects = [
 		"project_date": "2018 - 2019",
 		"project_url": null,
 		"project_description": "DOHOLRS is an online licensing and registration system for facilities and establishments in the Philippines. My contributions of this system is I was a part of the first team that developed this system.",
+		"additional_description": [
+			"An online licensing and regulatory management system designed to streamline the registration, application, and monitoring processes for facilities and establishments in the Philippines.",
+			"The system enables organizations to efficiently manage licensing requirements, regulatory submissions, and compliance-related records through a centralized online platform.",
+			"Contributed as a member of the initial development team, helping establish the foundation and core functionalities of the system.",
+		],
 		"project_main_image": "assets/rightapps/ra_logo_1.png",
 		"technologies_used": [
 			"PHP (Laravel Framework)", "CSS (Bootstrap)", "JavaScript (Native, jQuery Library, DataTables.js, etc...)", "MySQL"
@@ -477,6 +571,7 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
 		"project_title": "RightApps Accounting and Inventory System",
 		"category_short": "local",
 		"client_name": "Eastland Hotel and Residences",
@@ -484,6 +579,11 @@ var myProjects = [
 		"project_date": "2018 - 2019",
 		"project_url": null,
 		"project_description": "Accounting software is a computer program that maintains account books on computers, including recording transactions and account balances. Inventory system is a software system for tracking inventory levels, orders, sales and deliveries. My contributions on these systems are mostly on reports, fixing issues with unbalanced records, incorrect queries and sub-queries, newly added reports and new features requested by the client.",
+		"additional_description": [
+			"An integrated accounting and inventory management system designed to record financial transactions, maintain account balances, and monitor inventory levels, orders, sales, and deliveries.",
+			"The system improves business operations by providing accurate financial and inventory records, automated reports, and efficient data tracking.",
+			"Contributions include developing and enhancing reports, resolving record inconsistencies, optimizing queries and sub-queries, and implementing new features based on client requirements.",
+		],
 		"project_main_image": "assets/rightapps/ra_logo_1.png",
 		"technologies_used": [
 			"C#", "PostgreSQL"
@@ -491,6 +591,7 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
 		"project_title": "Attendance Monitoring System",
 		"category_short": "local",
 		"client_name": null,
@@ -498,6 +599,11 @@ var myProjects = [
 		"project_date": "2018",
 		"project_url": null,
 		"project_description": "On the first company I've worked with, we manually record our daily logs and every 15 days we would make a report and send it to our HR for our payroll. I created this system to record my daily logs and generate my reports in an automated manner.",
+		"additional_description": [
+			"An attendance monitoring system designed to digitize and automate the recording of employees’ daily time logs and attendance records.",
+			"The system generates automated attendance reports, reducing manual documentation and simplifying the submission process for payroll and HR management.",
+			"It improves workplace efficiency by providing accurate attendance tracking, faster report generation, and better record management.",
+		],
 		"project_main_image": null,
 		"technologies_used": [
 			"PHP", "CSS (Bootstrap)", "JavaScript", "MySQL"
@@ -505,13 +611,19 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
 		"project_title": "eScheduling System",
 		"category_short": "local",
 		"client_name": null,
 		"company_name": null,
 		"project_date": "2017 - 2018",
 		"project_url": null,
-		"project_description": "This system helps students, teachers and schools organize their scheduling. This helps the school on enrollment stage, where it automatically determine if in that time of the day the teacher or the room is occupied. This also helps students monitor any changes made on their schedules.",
+		"project_description": "This system helps students, teachers and schools organize their scheduling. This helps the school on enrollment stage, where it automatically determines if in that time of the day the teacher or the room is occupied. This also helps students monitor any changes made on their schedules.",
+		"additional_description": [
+			"A school scheduling management system designed to organize and manage class schedules for students, teachers, and school administrators.",
+			"The system automates schedule creation during enrollment by checking teacher availability, classroom occupancy, and possible scheduling conflicts.",
+			"It allows students and school personnel to monitor schedule updates, ensuring accurate and efficient management of academic timetables.",
+		],
 		"project_main_image": null,
 		"technologies_used": [
 			"PHP", "CSS (Bootstrap)", "JavaScript (Native, jQuery Library and DataTables.js)", "MySQL"
@@ -519,6 +631,67 @@ var myProjects = [
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
+		"project_title": "Pizza Ordering System",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": null,
+		"project_date": "2016 - 2017",
+		"project_url": null,
+		"project_description": "A web-based pizza ordering system developed to allow customers to browse available pizza products, add items to their cart, and complete their orders through a convenient online ordering process. The system supports cash-on-delivery transactions, providing customers with a simple and accessible way to place orders without requiring online payment methods.",
+		"additional_description": [
+			"A pizza ordering system developed to streamline the online ordering process by allowing customers to select products, manage their shopping carts, and submit orders conveniently.",
+			"The system includes cart management and checkout functionalities, with cash-on-delivery as the available payment option for completed orders.",
+			"Developed during the early adoption period of e-commerce shopping carts (2017–2018), the project demonstrates the implementation of online ordering workflows, customer transactions, and order management features.",
+		],
+		"project_main_image": null,
+		"technologies_used": [
+			"PHP", "CSS (Bootstrap)", "JavaScript (Native, jQuery Library)", "MySQL"
+		],
+		"project_images": [],
+	},
+	{
+		"academic_project": true,
+		"project_title": "Computer Ordering System",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": null,
+		"project_date": "2016",
+		"project_url": null,
+		"project_description": "A computer ordering system developed using pure HTML and CSS to showcase web design and front-end development skills. The system displays available computer products in an organized layout, allowing users to view product information and explore a simple online ordering interface.",
+		"additional_description": [
+			"A static computer ordering website developed using HTML and CSS to present available computer products and their details in a visually organized format.",
+			"The system focuses on improving web design skills through the implementation of layouts, styling, product displays, and user interface elements.",
+			"It demonstrates fundamental front-end development concepts, including webpage structure, visual design, and responsive presentation of product information.",
+		],
+		"project_main_image": null,
+		"technologies_used": [
+			"HTML", "JavaScript", "CSS"
+		],
+		"project_images": [],
+	},
+	{
+		"academic_project": true,
+		"project_title": "Calculator",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": null,
+		"project_date": "2016",
+		"project_url": null,
+		"project_description": "A Java-based calculator system designed to perform basic arithmetic operations and simple scientific calculations, providing users with an efficient tool for solving mathematical problems. The system incorporates various calculation functions through an interactive interface, allowing users to perform accurate computations with ease.",
+		"additional_description": [
+			"A Java-based calculator application developed to handle basic arithmetic operations and simple scientific calculations, including advanced mathematical functions.",
+			"The system provides an interactive and user-friendly interface that allows users to input values and perform various calculations efficiently.",
+			"It showcases the application of Java programming concepts, including interface design, input processing, mathematical logic, and function implementation.",
+		],
+		"project_main_image": null,
+		"technologies_used": [
+			"Java"
+		],
+		"project_images": [],
+	},
+	{
+		"academic_project": true,
 		"project_title": "Library System",
 		"category_short": "local",
 		"client_name": null,
@@ -526,23 +699,34 @@ var myProjects = [
 		"project_date": "2016",
 		"project_url": null,
 		"project_description": "A system that records all books and monitors people who borrow the books. This helps librarians to easily track the book's status, location of the borrower, and on which shelf it can be found.",
+		"additional_description": [
+			"A library management system designed to organize and maintain records of available books, including their details, availability, and shelf locations.",
+			"The system tracks borrowed books and borrower information, allowing librarians to monitor book status, due dates, and borrower records efficiently.",
+			"It improves library operations by simplifying book searches, inventory management, and the overall borrowing and returning process.",
+		],
 		"project_main_image": null,
 		"technologies_used": [
-			"Visual Basic", "MySQL"
+			"Visual Basic", "ADODB (MSAccess)"
 		],
 		"project_images": [],
 	},
 	{
+		"academic_project": true,
 		"project_title": "Catering System",
 		"category_short": "local",
 		"client_name": null,
 		"company_name": null,
-		"project_date": "2016",
+		"project_date": "2015 - 2016",
 		"project_url": null,
 		"project_description": "A system that records all types of foods and services that the catering company is offering. It also handles applications that applied for their services, which meals to serve, how many utensils will be used, and so on.",
+		"additional_description": [
+			"A catering management system designed to organize and maintain records of the company’s available food products, catering packages, and offered services.",
+			"The system manages customer applications and event requests, including meal selections, service requirements, utensil quantities, and other catering-related details.",
+			"It streamlines catering operations by improving data management, service preparation, and coordination between the company and its clients.",
+		],
 		"project_main_image": null,
 		"technologies_used": [
-			"Visual Basic", "MySQL"
+			"Visual Basic", "ADODB (MSAccess)"
 		],
 		"project_images": [],
 	},
@@ -555,7 +739,12 @@ var myExperiences = [
 		"company": "Freelance",
 		"location_1": null,
 		"location_2": null,
-		"description": "Worked as a Freelance/Outsource Developer, using any programming languages depending on requirement.",
+		"description": "Worked as a freelance software developer, delivering custom software solutions for diverse client requirements.",
+		"additional_description": [
+			"Worked as a freelance software developer, delivering custom software solutions for diverse client requirements.",
+			"Developed, maintained, and enhanced applications using programming languages and technologies best suited to each project's technical needs.",
+			"Collaborated with clients to gather requirements, implement features, and resolve technical issues while ensuring timely project delivery.",
+		],
 	},
 	{
 		"year": "2019 -  Present",
@@ -564,6 +753,11 @@ var myExperiences = [
 		"location_1": "Villa Leyson, Bacayan",
 		"location_2": "Cebu City, PH",
 		"description": "ALAS Electronics Engineering Services is a business owned by my father when I was still in college. Worked on software and web applications under this company, product installations and assisted in building the products as well.",
+		"additional_description": [
+			"Contributed to software and web application development for a family-owned electronics engineering services company.",
+			"Developed and maintained internal and client-facing applications to support business operations and product functionality.",
+			"Assisted with product assembly, installation, testing, and deployment, providing both technical software support and hands-on hardware integration.",
+		],
 	},
 	{
 		"year": "2022 -  2026",
@@ -572,6 +766,11 @@ var myExperiences = [
 		"location_1": null,
 		"location_2": "Mandaue City, PH",
 		"description": "Worked on a Real Estate Photo Editing Company. Added new features to the website and fixed bugs encountered by users.",
+		"additional_description": [
+			"Enhanced and maintained the company's web application for a real estate photo editing service.",
+			"Developed new features based on business and user requirements while identifying, troubleshooting, and resolving software defects.",
+			"Collaborated with the development team to improve application functionality, user experience, and overall system stability.",
+		],
 	},
 	{
 		"year": "2021 -  2022",
@@ -580,6 +779,11 @@ var myExperiences = [
 		"location_1": "2Quad Bldg, Cardinal Rosales Ave",
 		"location_2": "Cebu City, PH",
 		"description": "Worked on various web applications using PHP (Native, Laravel framework), WordPress, and MySQL.",
+		"additional_description": [
+			"Developed and maintained web applications using native PHP, the Laravel framework, WordPress, and MySQL.",
+			"Designed, implemented, and optimized application features while ensuring code quality, database performance, and system reliability.",
+			"Collaborated on the development, testing, debugging, and deployment of web-based solutions tailored to client and business requirements.",
+		],
 	},
 	{
 		"year": "2019 -  2021",
@@ -588,6 +792,11 @@ var myExperiences = [
 		"location_1": "2Quad Bldg, Cardinal Rosales Ave",
 		"location_2": "Cebu City, PH",
 		"description": "Worked on a Medical Software using PowerBuilder and other tools.",
+		"additional_description": [
+			"Contributed to the development and maintenance of a medical software application using PowerBuilder and supporting development tools.",
+			"Implemented new features, resolved software defects, and performed application enhancements to improve system functionality and reliability.",
+			"Collaborated with team members to test, debug, and maintain enterprise healthcare software solutions.",
+		],
 	},
 	{
 		"year": "2018 -  2019",
@@ -595,7 +804,12 @@ var myExperiences = [
 		"company": "RightApps Solutions and Services",
 		"location_1": "211 Natalio B. Bacalso Ave",
 		"location_2": "Cebu City, PH",
-		"description": "Worked on Reservation System, Accounting System, HR & Payroll System, Inventory System. Used C#, PHP (Laravel and CodeIgniter Framework), JavaScript (with libraries), MySQL and PostgreSQL.",
+		"description": "Worked on Reservation System, Accounting System, HR & Payroll System, Inventory System. Used C#, PHP (Laravel and CodeIgniter Framework), JavaScript (with libraries), and SQL (NoSQL, MySQL and PostgreSQL).",
+		"additional_description": [
+			"Developed and maintained enterprise business applications, including Reservation, Accounting, Human Resources & Payroll, and Inventory Management Systems.",
+			"Implemented new features, enhanced existing functionality, and resolved software defects across multiple applications to improve performance, reliability, and user experience.",
+			"Utilized C#, PHP (Laravel and CodeIgniter), JavaScript and its associated libraries, along with SQL and NoSQL databases, including MySQL and PostgreSQL, to build and support scalable business solutions.",
+		],
 	}
 ];
 
@@ -606,17 +820,118 @@ var myEducation = [
 		"location": "Cebu City, PH",
 		"degree": "Bachelor's",
 		"background": "BS ICT",
-		"description": "<strong>Bachelor of Science in Information and Communication Technology</strong>. My college journey was a whirlwind of discovery, from late-night study sessions to spontaneous adventures with friends, shaping me into who I am today. College was a rollercoaster ride of highs and lows, where I found my passions, forged lifelong bonds, and learned as much outside the classroom as within it.",
+		"background_long": "Bachelor of Science in Information and Communication Technology",
+		// "description": "<strong>Bachelor of Science in Information and Communication Technology</strong>. My college journey was a whirlwind of discovery, from late-night study sessions to spontaneous adventures with friends, shaping me into who I am today. College was a rollercoaster ride of highs and lows, where I found my passions, forged lifelong bonds, and learned as much outside the classroom as within it.",
+		"description": `<strong>Bachelor of Science in Information and Communication Technology</strong>. My college years provided a strong foundation in both technical knowledge and professional growth. Through academic projects, collaborative coursework, and hands-on software development, I strengthened my problem-solving abilities, adaptability, and passion for building reliable technology solutions. The experience challenged me to think critically, communicate effectively, and apply classroom concepts to real-world scenarios, preparing me for a career in software engineering.`,
+		"additional_description": ``,
 	},
+	// {
+	// 	"year": "2011 - 2015",
+	// 	"university": "Talamban National High School",
+	// 	"location": "Cebu City, PH",
+	// 	"degree": null,
+	// 	"background": null,
+	// 	"description": null,
+	// },
 ];
 
 var mySkills = [
 	"Web Development", "Software Development", "User Interface Design", "Full-stack Development"
 ];
 
-var myLanguages = [
-	"SQL (MySQL, PostgreSQL, SQLite, ElephantSQL)", "PHP (Native and Frameworks)", "JavaScript (Native, Libraries and Frameworks)", "Python (Jinja, Flask, SQLAlchemy, Selenium, and other modules...)", "PowerBuilder", "C# Programming Language", "VisualBasic", "Java", "C", "C++", "Cascading Style Sheets (CSS)"
+// Raw list
+var myLanguagesRaw = [
+	{
+		"name": "SQL",
+		"long_name": "SQL (MySQL, PostgreSQL, SQLite, ElephantSQL, ADODB)",
+		"backend": true,
+	},
+	{
+		"name": "PHP",
+		"long_name": "PHP (Native and Frameworks)",
+		"backend": true,
+		"backend_use": [
+			"Laravel",
+			"CodeIgniter",
+			"CakePHP",
+			"Symfony",
+		],
+	},
+	{
+		"name": "JavaScript",
+		"long_name": "JavaScript (Native, Libraries and Frameworks)",
+		"backend": true,
+		"frontend": true,
+		"frontend_use": [
+			"Vanilla JS (Native)",
+			"DataTables.js",
+			"Chart.js",
+			"jQuery",
+			"htmx",
+		],
+		"backend_use": [
+			"Express.js",
+			"NextJS",
+		],
+	},
+	{
+		"name": "HTML",
+		"long_name": "HTML",
+		"frontend": true,
+	},
+	{
+		"name": "CSS",
+		"long_name": "CSS (Native and Frameworks)",
+		"frontend": true,
+	},
+	{
+		"name": "Python",
+		"long_name": "Python (Jinja, Flask, SQLAlchemy, Selenium, and other modules...)",
+		"backend": true,
+	},
+	{
+		"name": "PowerBuilder",
+		"long_name": "PowerBuilder",
+		"desktop": true,
+	},
+	{
+		"name": "C#",
+		"long_name": "C# Programming Language",
+		"desktop": true,
+	},
+	{
+		"name": "VisualBasic",
+		"long_name": "VisualBasic",
+		"desktop": true,
+	},
+	{
+		"name": "Java",
+		"long_name": "Java",
+		"desktop": true,
+	},
+	{
+		"name": "C",
+		"long_name": "C",
+		"desktop": true,
+	},
+	{
+		"name": "C++",
+		"long_name": "C++",
+		"desktop": true,
+	},
 ];
+
+var myLanguages = myLanguagesRaw.map(function(language) { return language["long_name"]; }),
+	// get filters only, if want name only then `.map(function(language) { return language["name"]; })`
+	myFrontends = myLanguagesRaw.filter(function(language) { return (language["frontend"]??false === true) }),
+	myBackends = myLanguagesRaw.filter(function(language) { return (language["backend"]??false === true) }),
+	myDesktops = myLanguagesRaw.filter(function(language) { return (language["desktop"]??false === true) });
+
+var myTools = ["Docker", "Git, Github", "Figma", "Canva"];
+
+var myAPIs = ["REST API", "Webhook", "JSON Data Mapping", "Postman"];
+
+var myMethodologies = ["Agile", "Scrum", "SDLC"];
 
 var myBirtday = new Date("1999-02-20"),
 	currentDate = new Date(),
@@ -628,7 +943,10 @@ var loadContents = {
 	"skills": mySkills,
 	"languages": myLanguages,
 	"projects": myProjects,
+	"frontends": myFrontends,
+	"backends": myBackends,
+	"desktops": myDesktops,
+	"tools": myTools,
+	"apis": myAPIs,
+	"methodologies": myMethodologies,
 };
-
-
-document.querySelector(`#my_age`).innerHTML = myAge;

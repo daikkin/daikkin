@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume</title>
+<style>
+  :root {
+    --accent: #1f4e79;        /* section-header blue */
+    --rule: #1f4e79;
+    --ink: #1a1a1a;
+    --muted: #444;
+    --page: 8.5in;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #e9e9e9;
+    color: var(--ink);
+    font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+  .page {
+    max-width: var(--page);
+    margin: 24px auto;
+    background: #fff;
+    padding: 0.6in 0.7in;
+    box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+
+  /* ---------- Header ---------- */
+  .header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 12px;
+  }
+  .photo {
+    flex: 0 0 auto;
+    width: 2in;               /* ponytail: PH-standard 2x2 resume photo */
+    height: 2in;
+    border: 2px dashed #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #999;
+    font-size: 9pt;
+    background: #fafafa;
+  }
+  .identity { flex: 1 1 auto; }
+  .identity h1 {
+    margin: 0 0 2px;
+    font-size: 24pt;
+    letter-spacing: 1px;
+    color: var(--ink);
+  }
+  .identity .role {
+    margin: 0 0 8px;
+    font-size: 12pt;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .contact {
+    font-size: 9.5pt;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .contact span:not(:last-child)::after { content: "  |  "; color: #bbb; }
+
+  /* ---------- Sections ---------- */
+  section { margin-top: 14px; }
+  h2 {
+    color: var(--accent);
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin: 0 0 6px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--rule);
+  }
+  p.summary { margin: 0; text-align: justify; }
+
+  /* ---------- Skills grid ---------- */
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  .skills .col h3 {
+    margin: 0 0 4px;
+    font-size: 10.5pt;
+  }
+  .skills ul { margin: 0; padding-left: 16px; }
+  .skills li { margin-bottom: 1px; }
+
+  /* ---------- Entries ---------- */
+  .entry { margin-bottom: 10px; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .entry-head .title { font-weight: 700; }
+  .entry-head .date { font-weight: 700; white-space: nowrap; }
+  .entry ul { margin: 4px 0 0; padding-left: 18px; }
+  .entry li { margin-bottom: 3px; text-align: justify; }
+
+  .ph { background: #fff2b8; padding: 0 2px; }  /* placeholder highlight */
+  .d-none{ display: none!important; } /* hidden elements */
+
+  /* ---------- Print ---------- */
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; box-shadow: none; max-width: none; padding: 0.5in; }
+    .ph { background: transparent; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== HEADER (redacted in template — placeholders) ===== -->
+    <header class="header">
+      <div class="photo">
+        <!-- 2&times;2 in<br>PHOTO -->
+        <img class="profile-img" src="assets/profile.png" alt="..." style="height:100%;width:100%;object-fit:contain;" />  
+      </div>
+      <div class="identity">
+        <h1>REANCY VILLACARLOS</h1>
+        <p class="role"><span>Software / Web Developer</span></p>
+        <div class="contact">
+          <span class="ph">+63 928 451 9423</span>
+          <span class="ph">reancyvillacarlos@gmail.com</span>
+          <span class="ph">City, Province</span>
+          <span class="ph">linkedin.com/in/reancy-villacarlos-a689401b0/</span>
+          <span class="ph">github.com/daikkin</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== SUMMARY ===== -->
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">IT professional with expertise in enterprise application development, distributed systems analysis, and production support. Proven ability to diagnose complex software issues, optimize application performance, and enhance system reliability through observability and data-driven troubleshooting. Experienced in database design, containerized deployments, and translating technical complexity into clear documentation that enables effective cross-functional collaboration.</p>
+    </section>
+
+    <!-- ===== TECHNICAL SKILLS ===== -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <!-- <div class="col">
+          <h3>AI &amp; Data</h3>
+          <ul><li>Qwen</li><li>PaddleOCR</li><li>Machine Learning</li><li>Chart.js</li></ul>
+        </div> -->
+        <div class="col">
+          <h3>Desktop</h3>
+          <ul section_for="desktops"></ul>
+        </div>
+        <div class="col">
+          <h3>Backend / DB</h3>
+          <ul section_for="backends"></ul>
+        </div>
+        <div class="col">
+          <h3>Frontend</h3>
+          <ul section_for="frontends"></ul>
+        </div>
+        <div class="col">
+          <h3>Tools &amp; Infrastructure</h3>
+          <ul section_for="tools"></ul>
+        </div>
+        <div class="col">
+          <h3>APIs &amp; Security</h3>
+          <ul section_for="apis"></ul>
+        </div>
+        <div class="col">
+          <h3>Methodologies</h3>
+          <ul section_for="methodologies"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORK EXPERIENCE ===== -->
+    <section id="work-experience" section_for="experience">
+      <h2>Work Experience</h2>
+    </section>
+
+    <!-- ===== ACADEMIC PROJECTS ===== -->
+    <section id="academic-projects" section_for="projects">
+      <h2>Academic Projects</h2>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education-section" section_for="education">
+      <h2>Education</h2>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section>
+      <h2>Courses and Career Certification</h2>
+      <div class="entry">
+        <ul>
+          <li>No Certifications</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Blank templates -->
+  <div class="d-none" hidden>
+    <div id="work-experience-entry" class="entry">
+      <div class="entry-head">
+        <span class="title"><strong class="role"></strong>, <span class="company"></span></span>
+        <span class="date"></span>
+      </div>
+      <ul class="description-list"></ul>
+    </div>
+
+    <div id="academic-projects-entry" class="entry">
+      <div class="entry-head">
+        <span class="title"></span>
+        <span class="date"></span>
+      </div>
+      <ul class="description-list"></ul>
+    </div>
+
+    <div id="education-section-entry" class="entry">
+      <div class="entry-head">
+        <span class="title"><span class="degree"></span> | <span class="ph school"></span></span>
+        <span class="date"></span>
+      </div>
+    </div>
+
+    <ul>
+      <li id="certifications-entry"><strong class="certification-type">Certification:</strong> <span class="title"></span> &ndash; <span class="issuer"></span>, <span class="date"></span></li>
+      <li id="composed-list"></li>
+    </ul>
+  </div>
+
+  <script src="js/scripts_data.js"></script>
+  <script src="js/resume.scripts.js"></script>
+</body>
+</html>
