@@ -136,7 +136,7 @@ var myProjects = [
 		"company_name": "PhotoAndVideoEdits.com",
 		"project_date": "2026",
 		"project_url": "https://reptov.com/",
-		"project_description": "Reptov is a real-estate-photo-to-video editing website that turns listing photos into real estate video tour.",
+		"project_description": "Reptov is a real-estate-photo-to-video editing website that turns listing photos into real estate video tour. My primary contribution was implementing an API integration that enabled PhotoAndVideoEdits customer orders to be automatically created in Reptov without requiring any customer interaction.",
 		"project_main_image": "assets/reptov/landing_1.jpeg",
 		"technologies_used": [
 			"ReactJS", "JavaScript", "TypeScript", "PostgreSQL"
@@ -271,7 +271,7 @@ var myProjects = [
 		"company_name": "PhotoAndVideoEdits.com",
 		"project_date": "2023 - 2024",
 		"project_url": "https://www.hd.tours/",
-		"project_description": "HD Tours is a tour templating website for real estate agents. They provide the URL and/or the link with the property's ready images to their customers. My contributions to this system is I am part of the first team that developed this website.",
+		"project_description": "HD Tours is a tour templating website for real estate agents. They provide the URL and/or the link with the property's ready images to their customers. My contributions to this system is that I am part of the first team that developed this website.",
 		"project_main_image": "assets/hdtours/user_home.png",
 		"technologies_used": [
 			"PHP (Laravel Framework)", "CSS (Bootstrap)", "JavaScript (Native, jQuery Library, DataTables.js, Chart.js)", "MySQL"
