@@ -68,6 +68,26 @@ var removeElement = function(element) {
 	return element.parentNode.removeChild(element);
 };
 
+var myUrlsRaw = [
+	{
+		"name": "Github",
+		"url": "https://github.com/daikkin",
+		"icon_1": "bi bi-github",
+		"index": true,
+	},
+	{
+		"name": "LinkedIn",
+		"url": "https://www.linkedin.com/in/reancy-villacarlos-a689401b0",
+		"icon_1": "bi bi-linkedin",
+		"index": true,
+	},
+	{
+		"name": "Netlify",
+		"url": "https://reancy-villacarlos.netlify.app",
+		"icon_1": null,
+	},
+];
+
 var myProjects = [
 	{
 		"project_title": "ALAS Wifi",
@@ -432,6 +452,20 @@ var myProjects = [
 		],
 	},
 	{
+		"project_title": "C Projects",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": "Freelance",
+		"project_date": "2021",
+		"project_url": null,
+		"project_description": `<p>This was a college project for the younger sibling of my schoolmate's girlfriend at the time. It consisted of eight C programming exercises:</p> <ul><li>Input a set of integers and determine which sums are greater than or equal to 10.</li><li>Determine whether a given integer exists in an array.</li><li>Find the largest integer in an array.</li><li>Find the index of a given value in an array.</li><li>Print the values of a nested array.</li><li>Count the occurrences of a given integer in a nested array.</li><li>Determine whether a matrix is a square matrix. If it is, print its values.</li><li>Create a simple basketball scoresheet system.</li></ul>`,
+		"project_main_image": null,
+		"technologies_used": [
+			"C",
+		],
+		"project_images": [],
+	},
+	{
 		"project_title": "StoryTelling Media",
 		"category_short": "local",
 		"client_name": null,
@@ -604,11 +638,14 @@ var myProjects = [
 			"The system generates automated attendance reports, reducing manual documentation and simplifying the submission process for payroll and HR management.",
 			"It improves workplace efficiency by providing accurate attendance tracking, faster report generation, and better record management.",
 		],
-		"project_main_image": null,
+		"project_main_image": "assets/rightapps_monitoring/login.jpeg",
 		"technologies_used": [
 			"PHP", "CSS (Bootstrap)", "JavaScript", "MySQL"
 		],
-		"project_images": [],
+		"project_images": [
+			"assets/rightapps_monitoring/dashboard.jpeg",
+			"assets/rightapps_monitoring/announcements.jpeg",
+		],
 	},
 	{
 		"academic_project": true,
@@ -925,7 +962,8 @@ var myLanguages = myLanguagesRaw.map(function(language) { return language["long_
 	// get filters only, if want name only then `.map(function(language) { return language["name"]; })`
 	myFrontends = myLanguagesRaw.filter(function(language) { return (language["frontend"]??false === true) }),
 	myBackends = myLanguagesRaw.filter(function(language) { return (language["backend"]??false === true) }),
-	myDesktops = myLanguagesRaw.filter(function(language) { return (language["desktop"]??false === true) });
+	myDesktops = myLanguagesRaw.filter(function(language) { return (language["desktop"]??false === true) }),
+	myIndexUrls = myUrlsRaw.filter(function(url) { return (url["index"]??false === true); });
 
 var myTools = ["Docker", "Git, Github", "Figma", "Canva"];
 
@@ -949,4 +987,6 @@ var loadContents = {
 	"tools": myTools,
 	"apis": myAPIs,
 	"methodologies": myMethodologies,
+	"urls": myIndexUrls,
+	"allurls": myUrlsRaw,
 };

@@ -45,7 +45,10 @@
 }
 .education_description,
 .experience_description,
-.project_description {
+.project_technology_used,
+.project_description,
+.project_description p,
+.project_description ul li {
 	text-align: justify;
 }
 

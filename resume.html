@@ -38,8 +38,9 @@
   }
   .photo {
     flex: 0 0 auto;
-    width: 2in;               /* ponytail: PH-standard 2x2 resume photo */
-    height: 2in;
+    /* ponytail: PH-standard 2x2 resume photo */
+    width: 1in;
+    height: 1in;
     border: 2px dashed #999;
     display: flex;
     align-items: center;
@@ -130,12 +131,10 @@
       <div class="identity">
         <h1>REANCY VILLACARLOS</h1>
         <p class="role"><span>Software / Web Developer</span></p>
-        <div class="contact">
+        <div id="add-urls" section_for="allurls" class="contact">
           <span class="ph">+63 928 451 9423</span>
           <span class="ph">reancyvillacarlos@gmail.com</span>
           <span class="ph">City, Province</span>
-          <span class="ph">linkedin.com/in/reancy-villacarlos-a689401b0/</span>
-          <span class="ph">github.com/daikkin</span>
         </div>
       </div>
     </header>
@@ -210,6 +209,8 @@
 
   <!-- Blank templates -->
   <div class="d-none" hidden>
+    <span id="add-urls-entry" class="ph"></span>
+
     <div id="work-experience-entry" class="entry">
       <div class="entry-head">
         <span class="title"><strong class="role"></strong>, <span class="company"></span></span>

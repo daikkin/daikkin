@@ -68,6 +68,10 @@ document.addEventListener("DOMContentLoaded", function() {
 								dom.querySelector(`.entry-head .date`).textContent = lcIV["year"];
 							break;
 
+							case "allurls":
+								dom.textContent = lcIV["url"];
+							break;
+
 							case "desktops":
 							case "backends":
 							case "frontends":

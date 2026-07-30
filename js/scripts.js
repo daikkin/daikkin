@@ -246,6 +246,16 @@ document.addEventListener("DOMContentLoaded", function() {
 								case "languages":
 									dom.querySelector(`.sl_line`).innerHTML = lcIV;
 								break;
+
+								case "urls":
+									dom.setAttribute("href", lcIV["url"]);
+									if(lcIV["icon_1"] in checkNUB) {
+										dom.textContent = lcIV["name"];
+									} else if(lcIV["icon_1"].length > 0) {
+										tempVar_6 = lcIV["icon_1"].split(" ");
+										dom.querySelector(`i.url-icon`).classList.add(...tempVar_6);
+									}
+								break;
 							}
 						}
 					});
