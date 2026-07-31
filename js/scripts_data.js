@@ -507,7 +507,7 @@ var myProjects = [
 		"category_short": "local",
 		"client_name": null,
 		"company_name": "Medspecialized, Inc.",
-		"project_date": "2020 - 2021",
+		"project_date": "2019 - 2021",
 		"project_url": null,
 		"project_description": "IMS is a medical software that are mainly used by doctors in hospitals while IPS is mainly used by pharmacies. My contributions to these softwares are mostly new features and bug fixing.",
 		"project_main_image": "assets/medspec/logo.webp",
