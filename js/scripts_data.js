@@ -882,6 +882,13 @@ var myLanguagesRaw = [
 		"name": "SQL",
 		"long_name": "SQL (MySQL, PostgreSQL, SQLite, ElephantSQL, ADODB)",
 		"backend": true,
+		"backend_use": [
+			"MySQL",
+			"PostgreSQL",
+			"SQLite",
+			"ElephantSQL",
+			"ADODB"
+		],
 	},
 	{
 		"name": "PHP",

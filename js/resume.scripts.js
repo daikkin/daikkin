@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
 							break;
 
 							case "allurls":
-								dom.textContent = lcIV["url"];
+								dom.textContent = lcIV["url"].replace(/^(https?:\/\/)?(www\.)?/i, '');
 							break;
 
 							case "desktops":
