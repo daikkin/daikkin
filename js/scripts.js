@@ -159,6 +159,38 @@ document.addEventListener("DOMContentLoaded", function() {
 	// let everything load up first
 	setTimeout(function() {
 		Object.keys(loadContents).forEach(function(lcV, lcInd) {
+			let loadProjectAiTechnologies = function(domInstance, aiTechnology) {
+				let domProjParent = domInstance.querySelector(`.project_ai_technology`),
+					domProjectAi = cloner(document.querySelector(`#projects_ai_technology_used`), domProjParent);
+
+				switch(aiTechnology) {
+					case "Claude Code":
+						domProjectAi.classList.add("bg-danger", "bg-gradient");
+					break;
+
+					case "Replit":
+						domProjectAi.classList.add("bg-danger");
+					break;
+
+					case "ChatGPT":
+					case "FreeLLMAPI":
+					case "Free LLM":
+						domProjectAi.classList.add("bg-light", "text-dark");
+					break;
+
+					case "LM Studio":
+					case "Ollama":
+						domProjectAi.classList.add("bg-secondary");
+					break;
+
+					default:
+						domProjectAi.classList.add("bg-primary");
+					break;
+				}
+
+				domProjectAi.innerHTML = aiTechnology;
+			};
+
 			tempVar = document.querySelector(`[section_for="${lcV}"]`);
 			tempVar_3 = document.querySelector(`#${lcV}_template`);
 
@@ -208,6 +240,17 @@ document.addEventListener("DOMContentLoaded", function() {
 									}
 									if(!(lcIV["project_date"] in checkNUB)) {
 										dom.querySelector(`.project_company_name`).innerHTML += `<p class="m-0"><small>${lcIV["project_date"]}</small></p>`;
+									}
+									if(!(lcIV["project_ai_technology"] in checkNUB)) {
+										dom.querySelector(`.project_ai_technology`).parentNode.classList.remove("d-none");
+										dom.querySelector(`.project_ai_technology`).innerHTML = ``;
+										if(Array.isArray(lcIV["project_ai_technology"]) && lcIV["project_ai_technology"].length > 0) {
+											lcIV["project_ai_technology"].forEach(function(aiTechnology) {
+												loadProjectAiTechnologies(dom, aiTechnology);
+											});
+										} else {
+											loadProjectAiTechnologies(dom, lcIV["project_ai_technology"]);
+										}
 									}
 
 									// if(lcIV["project_images"].length > 0) {}

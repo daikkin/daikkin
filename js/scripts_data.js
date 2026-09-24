@@ -108,12 +108,58 @@ var myProjects = [
 		"category_short": "local",
 		"client_name": null,
 		"company_name": "ALAS Electronics Engineering Services",
-		"project_date": "Upcoming",
+		"project_date": "2026",
 		"project_url": null,
 		"project_description": "A web platform that centralizes employee data and automates HR tasks like payroll, timekeeping, benefits administration, and onboarding. It should allow organizations to streamline operations and empowers employees with self-service portals to request leaves and view payslips. this web app should also be allowed to handle multiple organizations and should also allow generating API Keys in each organization to be able to handle requests via API calls.",
-		"project_main_image": null,
-		"technologies_used": [],
+		"project_main_image": "assets/alashris/landing_1.jpeg",
+		"technologies_used": [
+			"ReactJS", "Express.js", "Node.js", "JavaScript", "TypeScript", "PostgreSQL"
+		],
+		"project_images": [
+			"assets/alashris/dashboard_admin_1.jpeg",
+			"assets/alashris/dashboard_employee_1.jpeg",
+		],
+		"project_ai_technology": [
+			"Free LLM", "LM Studio", "Ollama (first run only)"
+		],
+	},
+	{
+		"project_title": "ALAS HRIS (Employee Capture)",
+		"category_short": "local",
+		"client_name": null,
+		"company_name": "ALAS Electronics Engineering Services",
+		"project_date": "2026",
+		"project_url": null,
+		"project_description": "A web platform that allows this app to capture employee punch via kiosk terminal. The process of capturing an employee is via Facial Recognition technology, where employees enroll their face in `ALAS HRIS` app and this app will then process those images when employees go in/out of their organization.",
+		"project_main_image": "assets/alashrispy/landing_1.jpeg",
+		"technologies_used": [
+			"Python (Flask, Jinja, Facial Recognition, OpenCV, Numpy, Multiprocessing, etc...)", "CSS (Bootstrap)", "JavaScript", "SocketIO", "SQLite", "Linux-based OS (RaspberryPi, Orange Pi PC, etc...)"
+		],
+		"project_images": [
+			"assets/alashrispy/landing_2.jpeg",
+			"assets/alashrispy/login_1.jpeg",
+			"assets/alashrispy/dashboard_1.jpeg",
+		],
+		"project_ai_technology": [
+			"ChatGPT", "Free LLM",
+		],
+	},
+	{
+		"project_title": "RAV Cabinet Master (Storefront)",
+		"category_short": "online",
+		"client_name": null,
+		"company_name": "Freelance",
+		"project_date": "2026",
+		"project_url": "https://store.ravcabinetmaster.com/",
+		"project_description": "A web platform that centralizes employee data and automates HR tasks like payroll, timekeeping, benefits administration, and onboarding. It should allow organizations to streamline operations and empowers employees with self-service portals to request leaves and view payslips. this web app should also be allowed to handle multiple organizations and should also allow generating API Keys in each organization to be able to handle requests via API calls.",
+		"project_main_image": "assets/ravcabinetmaster/landing_1.jpeg",
+		"technologies_used": [
+			"PHP (Laravel Framework)", "CSS", "JavaScript", "MySQL"
+		],
 		"project_images": [],
+		"project_ai_technology": [
+			"Claude Code"
+		],
 	},
 	{
 		"project_title": "Southside Devs",
@@ -128,12 +174,15 @@ var myProjects = [
 			"PHP (Codeigniter Framework)", "CSS", "JavaScript", "MySQL"
 		],
 		"project_images": [],
+		"project_ai_technology": [
+			"Claude Code", "Free LLM", "LM Studio", "Ollama"
+		],
 	},
 	{
 		"project_title": "Reptov",
 		"category_short": "website",
 		"client_name": null,
-		"company_name": "PhotoAndVideoEdits.com",
+		"company_name": "PhotoAndVideoEdits, LLC",
 		"project_date": "2026",
 		"project_url": "https://reptov.com/",
 		"project_description": "Reptov is a real-estate-photo-to-video editing website that turns listing photos into real estate video tour. My primary contribution was implementing an API integration that enabled PhotoAndVideoEdits customer orders to be automatically created in Reptov without requiring any customer interaction.",
@@ -142,6 +191,9 @@ var myProjects = [
 			"ReactJS", "JavaScript", "TypeScript", "PostgreSQL"
 		],
 		"project_images": [],
+		"project_ai_technology": [
+			"Replit"
+		],
 	},
 	{
 		"project_title": "ALAS IT Control",
@@ -161,12 +213,15 @@ var myProjects = [
 			"assets/alas_scanattenditcontrol/show_4.jpeg",
 			"assets/alas_scanattenditcontrol/show_5.jpeg",
 		],
+		"project_ai_technology": [
+			"Ollama", "LM Studio",
+		],
 	},
 	{
 		"project_title": "Python Scrapper",
 		"category_short": "local",
 		"client_name": null,
-		"company_name": "PhotoAndVideoEdits.com",
+		"company_name": "PhotoAndVideoEdits, LLC",
 		"project_date": "2025",
 		"project_url": null,
 		"project_description": "A python script that would download images in a website.",
@@ -268,7 +323,7 @@ var myProjects = [
 		"project_title": "HD Tours",
 		"category_short": "website",
 		"client_name": null,
-		"company_name": "PhotoAndVideoEdits.com",
+		"company_name": "PhotoAndVideoEdits, LLC",
 		"project_date": "2023 - 2024",
 		"project_url": "https://www.hd.tours/",
 		"project_description": "HD Tours is a tour templating website for real estate agents. They provide the URL and/or the link with the property's ready images to their customers. My contributions to this system is that I am part of the first team that developed this website.",
@@ -299,7 +354,7 @@ var myProjects = [
 		"project_title": "Photo And Video Edits",
 		"category_short": "website",
 		"client_name": null,
-		"company_name": "PhotoAndVideoEdits.com",
+		"company_name": "PhotoAndVideoEdits, LLC",
 		"project_date": "2022 - 2026",
 		"project_url": "https://www.photoandvideoedits.com/",
 		"project_description": "PhotoAndVideoEdits.com is a real estate photo-editing company. My contributions to this website is mostly on fixing bugs encountered by customers and supports and added new features to the website.",
@@ -501,6 +556,20 @@ var myProjects = [
 			"assets/lyw/coaching.png",
 			"assets/lyw/podcast.png",
 		],
+	},
+	{
+		"project_title": "RFID Sensor for Attendance (Solyu)",
+		"category_short": "local",
+		"client_name": "Maximille Pacis",
+		"company_name": "ALAS Electronics Engineering Services",
+		"project_date": "2020",
+		"project_url": null,
+		"project_description": "A group of students from CIT-U was looking for an Attendance web service that would help automate their RaspberryPi RFID Sensor for Students and Teachers. Since we already created a SaaS project (Solyu) that handles School system, we added a new feature in our web app that would accept API calls from their RFID Sensor to our web app. I also improved their python script and added the API call to our web app.",
+		"project_main_image": null,
+		"technologies_used": [
+			"RaspberryPi (Linux-based OS)", "Python"
+		],
+		"project_images": [],
 	},
 	{
 		"project_title": "IMS / IPS Medical Software",

@@ -508,8 +508,11 @@
 			</div>
 
 			<!-- Project Card 1-->
-			<div id="projects_template" class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-				<div class="card-body p-0">
+			<div id="projects_template" class="card shadow rounded-4 border-0 mb-5 position-relative">
+				<div class="d-none position-absolute top-0 start-50 translate-middle" style="z-index: 1001;">
+					<div class="project_ai_technology d-flex flex-row"></div>
+				</div>
+				<div class="card-body overflow-hidden rounded-end rounded-4 p-0">
 					<div class="row">
 						<div class="col-md">
 							<div class="project_details p-5">
@@ -532,6 +535,15 @@
 							<img class="w-100 project_image" src="https://dummyimage.com/200x200/343a40/6c757d" style="object-fit: cover;" alt="..." />
 						</div>
 					</div>
+				</div>
+			</div>
+
+			<span id="projects_ai_technology_used" class="badge rounded-pill border border-blank"></span>
+
+			<!-- Project View More -->
+			<div id="projects_viewmore" class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+				<div class="card-body text-center">
+					<a class="btn btn-link w-100" href="javascript:viewMore('projects');">Show more...</a>
 				</div>
 			</div>
 
