@@ -173,8 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					break;
 
 					case "ChatGPT":
-					case "FreeLLMAPI":
-					case "Free LLM":
+					case "LLM":
 						domProjectAi.classList.add("bg-light", "text-dark");
 					break;
 

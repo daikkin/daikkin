@@ -116,11 +116,11 @@ var myProjects = [
 			"ReactJS", "Express.js", "Node.js", "JavaScript", "TypeScript", "PostgreSQL"
 		],
 		"project_images": [
-			"assets/alashris/dashboard_admin_1.jpeg",
-			"assets/alashris/dashboard_employee_1.jpeg",
+			// "assets/alashris/dashboard_admin_1.jpeg",
+			// "assets/alashris/dashboard_employee_1.jpeg",
 		],
 		"project_ai_technology": [
-			"Free LLM", "LM Studio", "Ollama (first run only)"
+			"LLM", "LM Studio", "Ollama (first run only)"
 		],
 	},
 	{
@@ -138,10 +138,10 @@ var myProjects = [
 		"project_images": [
 			"assets/alashrispy/landing_2.jpeg",
 			"assets/alashrispy/login_1.jpeg",
-			"assets/alashrispy/dashboard_1.jpeg",
+			// "assets/alashrispy/dashboard_1.jpeg",
 		],
 		"project_ai_technology": [
-			"ChatGPT", "Free LLM",
+			"ChatGPT", "LLM",
 		],
 	},
 	{
@@ -175,7 +175,7 @@ var myProjects = [
 		],
 		"project_images": [],
 		"project_ai_technology": [
-			"Claude Code", "Free LLM", "LM Studio", "Ollama"
+			"Claude Code", "LLM", "LM Studio", "Ollama"
 		],
 	},
 	{
