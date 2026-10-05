@@ -245,10 +245,10 @@ document.addEventListener("DOMContentLoaded", function() {
 										dom.querySelector(`.project_ai_technology`).innerHTML = ``;
 										if(Array.isArray(lcIV["project_ai_technology"]) && lcIV["project_ai_technology"].length > 0) {
 											lcIV["project_ai_technology"].forEach(function(aiTechnology) {
-												loadProjectAiTechnologies(dom, aiTechnology);
+												// loadProjectAiTechnologies(dom, aiTechnology);
 											});
 										} else {
-											loadProjectAiTechnologies(dom, lcIV["project_ai_technology"]);
+											// loadProjectAiTechnologies(dom, lcIV["project_ai_technology"]);
 										}
 									}
 
