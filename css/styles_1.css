@@ -27,8 +27,8 @@
 	color: #fff !important;
 }
 .image_block_show_2 {
-	/*max-height: 200px;
-	width: auto;*/
+	min-height: 90vh;
+	object-fit: contain;
 }
 .ci_inner {
 	display: flex;
