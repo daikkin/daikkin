@@ -61,7 +61,7 @@ var showOtherImges = function(_this, contentType = "projects", indexFind = 0) {
 	let cleanCarouselItem_1 = document.querySelector(`#cleanCarouselItem_1`),
 		cleanCarouselItem_2 = document.querySelector(`#cleanCarouselItem_2`);
 
-	imageViewerModal.querySelector(`.modal-body`).innerHTML = "";
+	imageViewerModal.querySelector(`.modal-body .modal-body-content`).innerHTML = "";
 
 	if(!(loadContents[contentType] in checkNUB)) {
 		if(!(loadContents[contentType][indexFind] in checkNUB)) {
@@ -81,7 +81,7 @@ var showOtherImges = function(_this, contentType = "projects", indexFind = 0) {
 	}
 
 	if(_isFound && _imagesArray.length > 0) {
-		_dom = carouselCloner(imageViewerModal.querySelector(`.modal-body`));
+		_dom = carouselCloner(imageViewerModal.querySelector(`.modal-body .modal-body-content`));
 
 		if(_dom) {
 			_imagesArray.forEach(function(iaV, iaInd) {

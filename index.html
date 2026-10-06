@@ -424,12 +424,19 @@
 		<div class="modal fade" id="imageViewModal" tabindex="-1" aria-labelledby="imageViewModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-fullscreen">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="imageViewModalLabel">Image Viewer</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
+					<div class="modal-body position-relative">
+						<div class="position-fixed top-0 start-0 p-1" style="z-index: 1001;">
+							<button type="button" class="btn btn-danger btn-lg rounded-circle" data-bs-dismiss="modal" aria-label="Close" style="height: 75px; width: 75px;">
+								<span class="btn-close"></span>
+							</button>
+						</div>
+						<div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1001;">
+							<div class="card p-3">
+								<h1 class="modal-title fs-5" id="imageViewModalLabel">Image Viewer</h1>
+							</div>
+						</div>
 
+						<div class="modal-body-content"></div>
 					</div>
 					<!-- <div class="modal-footer">
 						<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
